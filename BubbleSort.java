@@ -1,30 +1,32 @@
-package main.java.com.sort;
+package main.java.com.bubble;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class BubbleSort {
 
     private int[] inputArray;
 
-    public void setinputArray(int[] array){
+    private void setinputArray(int[] array){
         this.inputArray = array;
     }
 
-    public int[] getinputArray(int[] array){
+    private int[] getInputArray(){
         return this.inputArray;
     }
 
-    public int[] bubbleSort(int[] array){
-        for (int rep = 0; rep < array.length; rep++)
-            for (int i = 0; i < array.length; i++){
-                if(array[i] > array[i+1]){
-                    int temp = array[i+1];
-                    array[i+1] = array[i];
-                    array[i] = temp;
+    public int[] bubbleSort(int[] array) throws RuntimeException{
+        setinputArray(array);
+        if (inputArray.length == 0)
+            throw new RuntimeException("Empty Array");
+        for (int rep = 0; rep < inputArray.length-1; rep++)
+            for (int i = 0; i < inputArray.length-rep-1; i++){
+                if(inputArray[i] > inputArray[i+1]){
+                    int temp = inputArray[i+1];
+
+                    inputArray[i+1] = inputArray[i];
+                    inputArray[i] = temp;
                 }
             }
-        return array;
+        return getInputArray();
     }
 
 }
